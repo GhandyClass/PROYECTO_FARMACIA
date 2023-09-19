@@ -297,7 +297,10 @@ public class TipoUsuario_IU extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
-
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            btnRegistrar.requestFocus();
+            btnRegistrar.doClick();
+        }
     }//GEN-LAST:event_txtNombreKeyPressed
 
     private void txtNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusGained
