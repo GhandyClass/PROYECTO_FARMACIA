@@ -32,14 +32,14 @@ public class TipoUsuarioBD {
         String[] cabecera = {"CODIGO", "NOMBRE"};
         String[] registros = new String[2];
         tabla_temporal = new DefaultTableModel(null, cabecera);
-        sql = "SELECT idtipousuario,tuNombre FROM tipousuario";
+        sql = "SELECT idtipoUsuario,tuNombre FROM tipousuario";
 
         try {
 
             PreparedStatement pst = cn.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                registros[0] = rs.getString("idtipousuario");
+                registros[0] = rs.getString("idtipoUsuario");
                 registros[1] = rs.getString("tuNombre");
 
                 tabla_temporal.addRow(registros);
@@ -52,27 +52,27 @@ public class TipoUsuarioBD {
         }
     }
 
-    public boolean registrarTipoUsuario(TipoUsuario u) {
+ public boolean registrarTipoUsuario(TipoUsuario tu) {
 
-        sql = "INSERT INTO tipousuario(idtipousuario,tuNombre) VALUES (0,?)";
+        sql = "INSERT INTO tipousuario(idtipoUsuario,tuNombre) VALUES(0,?)";
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setString(1, u.getTuNombre());
+            pst.setString(1, tu.getTuNombre());
 
             pst.executeUpdate();
+            
+            return true;
 
         } catch (Exception e) {
-
             JOptionPane.showMessageDialog(null, e, "Problemas al registrar", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        return true;
-    }
+ }
 
 
     public boolean modificarTipoUsuario(TipoUsuario tu) {
 
-        sql = "UPDATE tipousuario SET tuNombre=? WHERE idtipousuario=?";
+        sql = "UPDATE tipousuario SET tuNombre=? WHERE idtipoUsuario=?";
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
 
@@ -91,7 +91,7 @@ public class TipoUsuarioBD {
 
     public boolean eliminarTipoUsuario(TipoUsuario tu) {
 
-        sql = "DELETE  FROM tipousuario WHERE idtipousuario=?";
+        sql = "DELETE  FROM tipousuario WHERE idtipoUsuario=?";
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setInt(1, tu.getIdtipousuario());

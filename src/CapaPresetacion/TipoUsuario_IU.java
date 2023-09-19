@@ -22,6 +22,7 @@ public class TipoUsuario_IU extends javax.swing.JInternalFrame {
     public TipoUsuario_IU() {
         initComponents();
         reportar();
+
     }
 
     public void reportar() {
@@ -39,11 +40,12 @@ public class TipoUsuario_IU extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     public void limpiar() {
-        txtCodigo.setText(" ");
-        txtNombre.setText(" ");
+        txtcodigoT.setText("");
+        txtNombre.setText("");
         txtNombre.requestFocus();
     }
 
@@ -76,11 +78,11 @@ public class TipoUsuario_IU extends javax.swing.JInternalFrame {
         btnEliminar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnLimpiar = new javax.swing.JButton();
-        txtCodigo = new javax.swing.JTextField();
         btnCerrar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         btnRegistrar = new javax.swing.JButton();
+        txtcodigoT = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -131,8 +133,6 @@ public class TipoUsuario_IU extends javax.swing.JInternalFrame {
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/limpiar.png"))); // NOI18N
         btnLimpiar.setText("LIMPIAR");
 
-        txtCodigo.setEnabled(false);
-
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/cerrar.png"))); // NOI18N
         btnCerrar.setText("CERRAR");
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -157,12 +157,15 @@ public class TipoUsuario_IU extends javax.swing.JInternalFrame {
             }
         });
 
+        btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/guardar.png"))); // NOI18N
         btnRegistrar.setText("REGISTRAR");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
             }
         });
+
+        txtcodigoT.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,21 +181,21 @@ public class TipoUsuario_IU extends javax.swing.JInternalFrame {
                         .addComponent(txtNombre))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtcodigoT, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnRegistrar)
-                        .addGap(39, 39, 39)
+                        .addGap(52, 52, 52)
                         .addComponent(btnModificar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnLimpiar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
                         .addComponent(btnCerrar)))
                 .addContainerGap())
         );
@@ -200,12 +203,11 @@ public class TipoUsuario_IU extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3)
-                        .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtcodigoT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -219,7 +221,7 @@ public class TipoUsuario_IU extends javax.swing.JInternalFrame {
                     .addComponent(btnLimpiar)
                     .addComponent(btnCerrar)
                     .addComponent(btnRegistrar))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -230,7 +232,7 @@ public class TipoUsuario_IU extends javax.swing.JInternalFrame {
         if (evt.getClickCount() == 2) {
             int fila_seleccionada = tabla_reporte_TipoUsuario.getSelectedRow();
 
-            txtCodigo.setText(tabla_reporte_TipoUsuario.getValueAt(fila_seleccionada, 0).toString());
+            txtcodigoT.setText(tabla_reporte_TipoUsuario.getValueAt(fila_seleccionada, 0).toString());
             txtNombre.setText(tabla_reporte_TipoUsuario.getValueAt(fila_seleccionada, 1).toString());
 
         }
@@ -238,12 +240,12 @@ public class TipoUsuario_IU extends javax.swing.JInternalFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
-        if (txtCodigo.getText().length() > 0) {
+        if (txtcodigoT.getText().length() > 0) {
             if (txtNombre.getText().length() > 0) {
                 TipoUsuario oTipoUsuario = new TipoUsuario();
                 TipoUsuarioBD oTipoUsuarioBD = new TipoUsuarioBD();
 
-                oTipoUsuario.setIdtipousuario(Integer.parseInt(txtCodigo.getText().trim()));
+                oTipoUsuario.setIdtipousuario(Integer.parseInt(txtcodigoT.getText().trim()));
                 oTipoUsuario.setTuNombre(txtNombre.getText().trim().toUpperCase());
 
                 boolean rpta = oTipoUsuarioBD.modificarTipoUsuario(oTipoUsuario);
@@ -267,10 +269,10 @@ public class TipoUsuario_IU extends javax.swing.JInternalFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        if (txtCodigo.getText().length() > 0) {
+        if (txtcodigoT.getText().length() > 0) {
             int aviso = JOptionPane.showConfirmDialog(rootPane, "Estas seguro de eliminar");
             if (aviso == 0) {
-                int codigo = Integer.parseInt(txtCodigo.getText().trim());
+                int codigo = Integer.parseInt(txtcodigoT.getText().trim());
                 TipoUsuarioBD oTipoUsuarioBD = new TipoUsuarioBD();
                 TipoUsuario oTipoUsuario = new TipoUsuario();
 
@@ -314,29 +316,35 @@ public class TipoUsuario_IU extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtNombreFocusLost
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        // TODO add your handling code here:
+
         if (txtNombre.getText().length() > 0) {
-            if (txtCodigo.getText().length() == 0) {
+
+            if (txtcodigoT.getText().length() == 0) {
 
                 TipoUsuario oTipoUsuario = new TipoUsuario();
                 TipoUsuarioBD oTipoUsuarioBD = new TipoUsuarioBD();
 
-                oTipoUsuario.setTuNombre(txtNombre.getText().toUpperCase());
+                oTipoUsuario.setTuNombre(txtNombre.getText().trim().toUpperCase());
+
                 boolean rpta = oTipoUsuarioBD.registrarTipoUsuario(oTipoUsuario);
                 if (rpta) {
-                    exito("Se Registro Correctamente");
+                    exito("Se registro correctamente");
                     reportar();
                     limpiar();
-                } else {
-                    error("Tienes problemas al Registrar");
-                }
 
-            } else {
-                error("No puedes registrar porque ya exite");
+                } else {
+                    error("Tienes problemas al registrar");
+                }
+            }else {
+                error("No puedes registrar porque ya existe...");
             }
+
         } else {
-            error("Ingrese Nombre");
+            error("Ingresa el nombre");
             txtNombre.requestFocus();
         }
+
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
 
@@ -352,7 +360,7 @@ public class TipoUsuario_IU extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla_reporte_TipoUsuario;
     private javax.swing.JTextField txtCantidad;
-    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtcodigoT;
     // End of variables declaration//GEN-END:variables
 }
